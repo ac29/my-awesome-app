@@ -92,8 +92,13 @@ function showCurrentCity(response) {
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
+  let windspeed = Math.round (response.data.wind.speed);
   let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = `${temperature}`;
+  let windspeedElement = document.querySelector ("#windspeed");
+    windspeedElement.innerHTML = `${windspeed}`;
+  let weatherDescriptionElement = document.querySelector ("#weather-description");
+    weatherDescriptionElement.innerHTML = response.data.weather[0].description;
 
 }
 

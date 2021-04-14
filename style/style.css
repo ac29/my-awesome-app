@@ -22,3 +22,8 @@ a {
   color: black;
   text-decoration: none;
 }
+.today-weather {
+  list-style: none;
+  margin: 0 auto;
+  display: inline;
+}
