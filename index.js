@@ -3,12 +3,11 @@ function formatDate() {
   let now = new Date();
   let date = now.getDate();
   let hour = now.getHours();
-    if (hour < 0) {
-        hour = `0 ${hour}`;
+    if (hour < 10) {
+        hour = `0${hour}`;
     }
-
   let minute = now.getMinutes();
-   if  (minute < 0) { 
+   if  (minute < 10) { 
        minute = `0${minute}`;
   }
   let year = now.getFullYear();

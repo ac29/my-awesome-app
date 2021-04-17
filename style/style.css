@@ -1,6 +1,7 @@
 body {
   background: linear-gradient(white, #ffffcc);
   font-family: "Comfortaa", cursive;
+  font-size: smaller;
   padding: 40px;
 }
 
@@ -10,6 +11,12 @@ h1 {
 
 h2 {
   text-align: center;
+  font-size: 20px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 
 .currentDate {
@@ -18,12 +25,20 @@ h2 {
   display: inline;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-}
 .today-weather {
   list-style: none;
   margin: 0 auto;
   display: inline;
+}
+
+.weather-app-wrapper {
+  background-color: aquamarine;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.weather-app {
+  padding: 20px;
+  border: 1px solid #121213;
+  border-radius: 5px;
 }
