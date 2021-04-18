@@ -1,4 +1,4 @@
-//Challenge 1
+
 function formatDate() {
   let now = new Date();
   let date = now.getDate();
@@ -52,17 +52,28 @@ axios.get(`${apiUrl}`).then(showTemperature);
 
 function convertToFahrenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let farenheitTemperature = document.querySelector ("#temperature");
-  let temperature = farenheitTemperature.innerHTML;
+  let temperature = celsiusTemperature;
   farenheitTemperature.innerHTML = Math.round ((temperature * 9)/ 5 + 32 );
 }
 
-function convertToCelcius(event) {
-    event.preventDefault();
-    let celciusTemperature = document.querySelector ("#temperature");
-    let temperature = celciusTemperature.innerHTML
-    celciusTemperature.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+//function convertToCelcius(event) {
+  //  event.preventDefault();
+    //celciusLink
+    //let celciusTemperature = document.querySelector ("#temperature");
+    //let temperature = response.data.main.temp;
+   // celciusTemperature.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+//}
 
 function showCurrentCity(response) {
   let cityName = response.data.name;
@@ -78,6 +89,8 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity"); 
   let weatherDescriptionElement = document.querySelector ("#weather-description");
   let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
   temperatureElement.innerHTML = `${temperature}`;
   windspeedElement.innerHTML = `${windspeed}`;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -112,7 +125,9 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelcius);
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let celsiusTemperature = null;
 
 let currentButton = document.querySelector ("#current-button");
 currentButton.addEventListener("click", getPosition);
