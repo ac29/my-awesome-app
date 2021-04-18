@@ -41,7 +41,6 @@ let formattedDate = `${day}, ${month} ${date}, ${year} ${hour}:${minute}`;
 }
 
 function citysearch(event) {
-  event.preventDefault();
 let cityInput = document.querySelector("#city-input");
 let cityElemnet = document.querySelector ("#city");
 cityElemnet.innerHTML=`${cityInput.value}`;
@@ -67,19 +66,42 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-//function convertToCelcius(event) {
-  //  event.preventDefault();
-    //celciusLink
-    //let celciusTemperature = document.querySelector ("#temperature");
-    //let temperature = response.data.main.temp;
-   // celciusTemperature.innerHTML = Math.round(((temperature - 32) * 5) / 9);
-//}
-
 function showCurrentCity(response) {
   let cityName = response.data.name;
   let displayCity = document.querySelector("#city");
   displayCity.innerHTML = `${cityName}`;
 }
+
+
+function displayForecast() {
+   let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+  }
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -130,5 +152,9 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 let celsiusTemperature = null;
 
 let currentButton = document.querySelector ("#current-button");
-currentButton.addEventListener("click", getPosition);
+currentButton.addEventListener("click", getPosition); 
+
+
+displayForecast();
+
 
