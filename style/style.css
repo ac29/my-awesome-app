@@ -1,9 +1,4 @@
 body {
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
   font-family: "Comfortaa", cursive;
   font-size: smaller;
   padding: 40px;
@@ -36,14 +31,18 @@ a {
 }
 
 .weather-app-wrapper {
-  background-color: white;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
   max-width: 600px;
   margin: 30px auto;
 }
 
 .weather-app {
   padding: 20px;
-  border: 1px solid #121213;
+  border: 3px solid #2b2d2f;
   border-radius: 5px;
 }
 
