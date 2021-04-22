@@ -149,7 +149,7 @@ function showPosition(position) {
 }
 
 function getPosition (event) {
-     
+     event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
@@ -172,4 +172,3 @@ let celsiusTemperature = null;
 let currentButton = document.querySelector ("#current-button");
 currentButton.addEventListener("click", getPosition); 
 
-getPosition();
