@@ -40,7 +40,7 @@ let formattedDate = `${day}, ${month} ${date}, ${year} ${hour}:${minute}`;
   return formattedDate;
 }
 
-function citysearch(event) {
+function citysearch(city) {
 let cityInput = document.querySelector("#city-input");
 let cityElemnet = document.querySelector ("#city");
 cityElemnet.innerHTML=`${cityInput.value}`;
@@ -79,7 +79,6 @@ function formatDay(timestamp) {
     return days[day];
 }
 
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -98,8 +97,8 @@ function displayForecast(response) {
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.max)}°  </span>
-          <span class="weather-forecast-temperature-min"> ${Math.round(forecastDay.min)}° </span>
+          <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temp.max)}°  </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(forecastDay.temp.min)}° </span>
         </div>
       </div>
   `;
@@ -150,7 +149,7 @@ function showPosition(position) {
 }
 
 function getPosition (event) {
-     event.preventDefault();
+     
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
@@ -173,5 +172,4 @@ let celsiusTemperature = null;
 let currentButton = document.querySelector ("#current-button");
 currentButton.addEventListener("click", getPosition); 
 
-
-
+getPosition();
